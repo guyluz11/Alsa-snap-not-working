@@ -44,23 +44,22 @@ parts:
       - git
       - gcc
       - make
-      - python3-pip
-      - libevent-dev
-      - libperl-dev
+      #      - python3-pip
+      #      - libevent-dev
+      #      - libperl-dev
       - libatlas-base-dev
-      - libasound2-plugins
+      #      - libasound2-plugins
       - libasound-dev
     stage-packages:
       - libatlas-base-dev
       - libevent-dev
+
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
 
 apps:
   demo:
     command-chain: ["snap/command-chain/alsa-launch"]
     command: scripts/cScripts/demo $SNAP
     plugs: [network, network-bind, gpio, hardware-observe, audio-playback, audio-record, pulseaudio, alsa]
-
-
-layout:
-  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
-    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib

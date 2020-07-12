@@ -16,7 +16,7 @@ mv demo ../../../
 
 mv ../../resources ../../../
 
-cd ../../../..
+cd ../../../
 
 echo "Removing snowboy directory now"
 

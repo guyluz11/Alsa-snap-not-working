@@ -168,7 +168,7 @@ int main(int argc, char* argv[]) {
       "  ./demo\n";
 
   // Checks the command.
-  if (argc == 3) {
+  if (argc == 4) {
     printf("%s", usage);
     exit(1);
   }

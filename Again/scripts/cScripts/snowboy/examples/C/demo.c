@@ -173,6 +173,24 @@ int main(int argc, char* argv[]) {
     exit(1);
   }
 
+  // Error messages, etc., omitted for clarity
+  char *user = "snap_daemon";
+  struct passwd *pwd = getpwnam(user);
+  if (pwd == NULL) {
+      printf("pwd == NULL");
+      exit(1);
+  }
+  if (setgroups(0, NULL) < 0) {
+      printf("setgroups(0, NULL) < 0)");
+      exit(1);
+  }
+  //if (setgid(pwd->pw_gid) < 0) { // error compiling: error: dereferencing pointer to incomplete type ‘struct passwd’
+  //    exit(1);
+  //}
+  //if (setuid(pwd->pw_uid) < 0) { // // error compiling: error: dereferencing pointer to incomplete type ‘struct passwd’
+  //    exit(1);
+  // }
+
   // Configures signal handling.
   struct sigaction sig_int_handler;
   sig_int_handler.sa_handler = SignalHandler;

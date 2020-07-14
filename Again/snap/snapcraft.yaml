@@ -43,6 +43,7 @@ parts:
       - unzip
       - git
       - gcc
+      - g++
       - make
       #      - python3-pip
       #      - libevent-dev
@@ -58,8 +59,12 @@ layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
     bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
 
+system-usernames:
+  snap_daemon: shared
+
 apps:
   demo:
     command-chain: ["snap/command-chain/alsa-launch"]
     command: scripts/cScripts/demo $SNAP
+    daemon: simple
     plugs: [network, network-bind, gpio, hardware-observe, audio-playback, audio-record, pulseaudio, alsa]
